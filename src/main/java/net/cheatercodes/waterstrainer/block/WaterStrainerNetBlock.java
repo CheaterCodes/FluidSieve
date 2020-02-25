@@ -1,13 +1,14 @@
 package net.cheatercodes.waterstrainer.block;
 
-import net.cheatercodes.waterstrainer.WaterStrainerMain;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityContext;
+import net.minecraft.state.StateManager;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+import virtuoel.towelette.api.FluidProperties;
 import virtuoel.towelette.api.Fluidloggable;
 
 public class WaterStrainerNetBlock extends Block implements Fluidloggable {
@@ -23,8 +24,13 @@ public class WaterStrainerNetBlock extends Block implements Fluidloggable {
                     createCuboidShape(15, 1, 1, 16, 14, 16)
             );
 
-    public WaterStrainerNetBlock() {
-        super(Block.Settings.copy(WaterStrainerMain.WATER_STRAINER_BASE_BLOCK));
+    public WaterStrainerNetBlock(Block.Settings settings) {
+        super(settings);
+    }
+
+    @Override
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(FluidProperties.FLUID, FluidProperties.LEVEL_1_8, FluidProperties.FALLING);
     }
 
     @Override

@@ -18,7 +18,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.cheatercodes.waterstrainer.WaterStrainerMain"
+      "net.cheatercodes.waterstrainer.WaterStrainer"
+    ],
+    "client": [
+      "net.cheatercodes.waterstrainer.WaterStrainerClient"
     ]
   },
   "mixins": [

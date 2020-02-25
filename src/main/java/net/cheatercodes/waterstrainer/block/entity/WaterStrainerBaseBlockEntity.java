@@ -1,6 +1,6 @@
 package net.cheatercodes.waterstrainer.block.entity;
 
-import net.cheatercodes.waterstrainer.WaterStrainerMain;
+import net.cheatercodes.waterstrainer.WaterStrainer;
 import net.minecraft.block.entity.LootableContainerBlockEntity;
 import net.minecraft.container.Container;
 import net.minecraft.container.GenericContainer;
@@ -25,7 +25,7 @@ public class WaterStrainerBaseBlockEntity extends LootableContainerBlockEntity i
     private DefaultedList<ItemStack> inventory;
 
     public WaterStrainerBaseBlockEntity() {
-        super(WaterStrainerMain.WATER_STRAINER_BASE_ENTITY);
+        super(WaterStrainer.BLOCK_ENTITY_TYPES.WATER_STRAINER_BASE);
         this.inventory = DefaultedList.ofSize(this.getInvSize(), ItemStack.EMPTY);
     }
 

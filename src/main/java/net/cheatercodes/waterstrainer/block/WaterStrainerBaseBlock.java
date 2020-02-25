@@ -13,8 +13,8 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
 public class WaterStrainerBaseBlock extends BlockWithEntity {
-    public WaterStrainerBaseBlock() {
-        super(Block.Settings.copy(Blocks.OAK_PLANKS));
+    public WaterStrainerBaseBlock(Block.Settings settings) {
+        super(settings);
     }
 
     @Override
