@@ -3,6 +3,15 @@ plugins {
 	id 'maven-publish'
 }
 
+repositories {
+	maven {
+		url "https://minecraft.curseforge.com/api/maven"
+	}
+	maven {
+		url 'https://jitpack.io'
+	}
+}
+
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
@@ -19,6 +28,8 @@ dependencies {
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+	modImplementation "com.github.Virtuoel:Towelette:9f770a3ff5"
 }
 
 processResources {

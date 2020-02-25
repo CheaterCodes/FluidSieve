@@ -5,8 +5,15 @@
       "rolls": 1,
       "entries": [
         {
-          "type": "minecraft:item",
-          "name": "minecraft:stick"
+          "type": "minecraft:loot_table",
+          "name": "waterstrainer:gameplay/water_strainer/nets",
+          "weight": 1,
+          "conditions": [
+            {
+              "condition": "random_chance",
+              "chance": 0.01
+            }
+          ]
         }
       ]
     }

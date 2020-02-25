@@ -56,9 +56,9 @@ public class WaterStrainerBaseBlockEntity extends LootableContainerBlockEntity i
 
     @Override
     public CompoundTag toTag(CompoundTag tag) {
-        return super.toTag(tag);
+        super.toTag(tag);
 
-        if(!this.serializeLootTable(tag)) {
+        if (!this.serializeLootTable(tag)) {
             Inventories.toTag(tag, this.inventory);
         }
 
@@ -69,8 +69,8 @@ public class WaterStrainerBaseBlockEntity extends LootableContainerBlockEntity i
     public void fromTag(CompoundTag tag) {
         super.fromTag(tag);
 
-        this.inventory = DefaultedList.ofSize(getInvSize(), ItemStack.EMPTY);
-        if(!this.deserializeLootTable(tag)) {
+        this.inventory = DefaultedList.ofSize(this.getInvSize(), ItemStack.EMPTY);
+        if (!this.deserializeLootTable(tag)) {
             Inventories.fromTag(tag, this.inventory);
         }
     }

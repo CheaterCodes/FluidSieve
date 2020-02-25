@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "waterstrainer:block/dense_water_strainer_net" }
+  }
+}

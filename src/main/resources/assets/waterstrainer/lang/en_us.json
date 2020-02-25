@@ -1,5 +1,8 @@
 {
   "block.waterstrainer.water_strainer_base": "Water Strainer",
   "block.waterstrainer.water_strainer_net": "Water Strainer Net",
+  "block.waterstrainer.dense_water_strainer_net": "Dense Water Strainer Net",
+  "item.waterstrainer.net": "Net",
+  "item.waterstrainer.dense_net": "Dense Net",
   "container.water_strainer_base": "Water Strainer"
 }

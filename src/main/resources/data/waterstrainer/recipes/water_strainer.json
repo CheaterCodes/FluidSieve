@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "/ /",
+    "#V#",
+    "#O#"
+  ],
+  "key": {
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    },
+    "V": {
+      "item": "minecraft:hopper"
+    },
+    "O": {
+      "item": "minecraft:barrel"
+    }
+  },
+  "result": {
+    "item": "waterstrainer:water_strainer_base",
+    "count": 1
+  }
+}
