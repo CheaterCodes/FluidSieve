@@ -1,27 +1,27 @@
 {
   "schemaVersion": 1,
-  "id": "waterstrainer",
+  "id": "fluid_sieve",
   "version": "${version}",
 
-  "name": "Water Strainer (Fabric)",
-  "description": "A (close) clone of the Water Strainer mod for the Fabric mod loader.",
+  "name": "Fluid Sieve",
+  "description": "A block extracting resources from fluids (or any other block).",
   "authors": [
-    "Me!"
+    "CheaterCodes"
   ],
   "contact": {
-    "sources": "https://github.com/CheaterCodes/WaterStrainer"
+    "sources": "https://github.com/CheaterCodes/FluidSieve"
   },
 
   "license": "MIT",
-  "icon": "assets/waterstrainer/icon.png",
+  "icon": "assets/fluid_sieve/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.cheatercodes.waterstrainer.WaterStrainer"
+      "net.cheatercodes.fluid_sieve.FluidSieve"
     ],
     "client": [
-      "net.cheatercodes.waterstrainer.WaterStrainerClient"
+      "net.cheatercodes.fluid_sieve.FluidSieveClient"
     ]
   },
   "mixins": [
@@ -33,6 +33,5 @@
     "minecraft": "1.15.x"
   },
   "suggests": {
-    "flamingo": "*"
   }
 }

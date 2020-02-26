@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "fluid_sieve:item/dense_mesh"
+  }
+}

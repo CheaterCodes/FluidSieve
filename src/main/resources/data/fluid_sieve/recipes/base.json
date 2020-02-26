@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "/ /",
+    "#V#",
+    "#O#"
+  ],
+  "key": {
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    },
+    "V": {
+      "item": "minecraft:hopper"
+    },
+    "O": {
+      "item": "minecraft:barrel"
+    }
+  },
+  "result": {
+    "item": "fluid_sieve:base",
+    "count": 1
+  }
+}

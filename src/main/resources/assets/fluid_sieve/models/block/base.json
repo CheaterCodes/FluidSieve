@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "top": "fluid_sieve:block/base_top",
+    "side": "fluid_sieve:block/base_side",
+    "bottom": "fluid_sieve:block/base_bottom"
+  }
+}

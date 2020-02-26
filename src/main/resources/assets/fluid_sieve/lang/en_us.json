@@ -1,0 +1,8 @@
+{
+  "block.fluid_sieve.base": "Fluid Sieve",
+  "block.fluid_sieve.net": "Net",
+  "block.fluid_sieve.dense_net": "Dense Net",
+  "item.fluid_sieve.mesh": "Mesh",
+  "item.fluid_sieve.dense_mesh": "Dense Mesh",
+  "container.fluid_sieve.base": "Fluid Sieve"
+}

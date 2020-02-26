@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "fluid_sieve:block/base"}
+  }
+}
