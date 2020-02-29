@@ -4,16 +4,8 @@
     {
       "conditions": [
         {
-          "condition": "random_chance",
-          "chance": 0.01
-        },
-        {
-          "condition": "location_check",
-          "predicate": {
-            "fluid": {
-              "tag": "minecraft:water"
-            }
-          }
+          "condition": "reference",
+          "name": "fluid_sieve:drop_chance"
         }
       ],
       "rolls": 1,

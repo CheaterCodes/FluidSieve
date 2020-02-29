@@ -1,0 +1,127 @@
+{
+  "condition": "alternative",
+  "terms": [
+    {
+      "condition": "inverted",
+      "term": {
+        "condition": "alternative",
+        "terms": [
+          {
+            "condition": "inverted",
+            "term": {
+              "condition": "location_check",
+              "predicate": {
+                "fluid": {
+                  "fluid": "minecraft:water"
+                }
+              }
+            }
+          },
+          {
+            "condition": "inverted",
+            "term": {
+              "condition": "random_chance",
+              "chance": 0.005
+            }
+          }
+        ]
+      }
+    },
+    {
+      "condition": "inverted",
+      "term": {
+        "condition": "alternative",
+        "terms": [
+          {
+            "condition": "inverted",
+            "term": {
+              "condition": "location_check",
+              "predicate": {
+                "fluid": {
+                  "fluid": "minecraft:flowing_water",
+                  "state": {
+                    "level": {
+                      "min": 6,
+                      "max": 8
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "condition": "inverted",
+            "term": {
+              "condition": "random_chance",
+              "chance": 0.00625
+            }
+          }
+        ]
+      }
+    },
+    {
+      "condition": "inverted",
+      "term": {
+        "condition": "alternative",
+        "terms": [
+          {
+            "condition": "inverted",
+            "term": {
+              "condition": "location_check",
+              "predicate": {
+                "fluid": {
+                  "fluid": "minecraft:flowing_water",
+                  "state": {
+                    "level": {
+                      "min": 3,
+                      "max": 5
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "condition": "inverted",
+            "term": {
+              "condition": "random_chance",
+              "chance": 0.005
+            }
+          }
+        ]
+      }
+    },
+    {
+      "condition": "inverted",
+      "term": {
+        "condition": "alternative",
+        "terms": [
+          {
+            "condition": "inverted",
+            "term": {
+              "condition": "location_check",
+              "predicate": {
+                "fluid": {
+                  "fluid": "minecraft:flowing_water",
+                  "state": {
+                    "level": {
+                      "min": 1,
+                      "max": 2
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "condition": "inverted",
+            "term": {
+              "condition": "random_chance",
+              "chance": 0.002
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
