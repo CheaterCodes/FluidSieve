@@ -7,19 +7,13 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class FluidSieveBlocks {
-    public static FluidSieveBlocks INSTANCE = new FluidSieveBlocks();
+    public static final BaseBlock BASE = new BaseBlock(Block.Settings.copy(Blocks.OAK_PLANKS));
+    public static final NetBlock NET = new NetBlock(Block.Settings.copy(BASE));
+    public static final NetBlock DENSE_NET = new NetBlock(Block.Settings.copy(NET));
 
-    public final BaseBlock BASE;
-    public final NetBlock NET;
-    public final NetBlock DENSE_NET;
-
-    private FluidSieveBlocks() {
-        BASE = register("base", new BaseBlock(Block.Settings.copy(Blocks.OAK_PLANKS)));
-        NET = register("net", new NetBlock(Block.Settings.copy(BASE)));
-        DENSE_NET = register("dense_net", new NetBlock(Block.Settings.copy(NET)));
-    }
-
-    private static <T extends Block> T register(String name, T block) {
-        return Registry.register(Registry.BLOCK, new Identifier(FluidSieve.ID, name), block);
+    public static void register() {
+        Registry.register(Registry.BLOCK, new Identifier(FluidSieve.MOD_ID, "base"), BASE);
+        Registry.register(Registry.BLOCK, new Identifier(FluidSieve.MOD_ID, "net"), NET);
+        Registry.register(Registry.BLOCK, new Identifier(FluidSieve.MOD_ID, "dense_net"), DENSE_NET);
     }
 }

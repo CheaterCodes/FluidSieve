@@ -2,7 +2,7 @@ package net.cheatercodes.fluid_sieve.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.EntityContext;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
@@ -12,7 +12,7 @@ import virtuoel.towelette.api.FluidProperties;
 import virtuoel.towelette.api.Fluidloggable;
 
 public class NetBlock extends Block implements Fluidloggable {
-    private static VoxelShape collisionShape=
+    private static final VoxelShape collisionShape=
             VoxelShapes.union(
                     createCuboidShape(0, 0, 0, 1, 16, 1),
                     createCuboidShape(15, 0, 0, 16, 16, 1),
@@ -34,7 +34,7 @@ public class NetBlock extends Block implements Fluidloggable {
     }
 
     @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, EntityContext ePos) {
+    public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context) {
         return collisionShape;
     }
 

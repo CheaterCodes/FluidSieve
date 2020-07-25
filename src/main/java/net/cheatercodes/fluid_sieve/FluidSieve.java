@@ -12,14 +12,14 @@ import virtuoel.statement.api.StateRefresher;
 import virtuoel.towelette.api.FluidProperties;
 
 public class FluidSieve implements ModInitializer {
-	public static String ID = "fluid_sieve";
-
-	public static FluidSieveBlocks BLOCKS = FluidSieveBlocks.INSTANCE;
-	public static FluidSieveBlockEntityTypes BLOCK_ENTITY_TYPES = FluidSieveBlockEntityTypes.INSTANCE;
-	public static FluidSieveItems ITEMS = FluidSieveItems.INSTANCE;
+	public static String MOD_ID = "fluid_sieve";
 
 	@Override
 	public void onInitialize() {
+		FluidSieveBlocks.register();
+		FluidSieveBlockEntityTypes.register();
+		FluidSieveItems.register();
+
 		Identifier flowingWater = Registry.FLUID.getId(Fluids.FLOWING_WATER);
 		if (!FluidProperties.FLUID.contains(flowingWater)) {
 			StateRefresher.INSTANCE.refreshBlockStates(FluidProperties.FLUID, ImmutableSet.of(flowingWater), ImmutableSet.of());

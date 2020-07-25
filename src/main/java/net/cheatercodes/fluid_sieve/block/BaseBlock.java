@@ -32,7 +32,7 @@ public class BaseBlock extends BlockWithEntity {
         if(!world.isClient) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
             if(blockEntity instanceof BaseBlockEntity) {
-                player.openContainer((BaseBlockEntity)blockEntity);
+                player.openHandledScreen((BaseBlockEntity)blockEntity);
             }
         }
 
@@ -40,15 +40,15 @@ public class BaseBlock extends BlockWithEntity {
     }
 
     @Override
-    public void onBlockRemoved(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
             if (blockEntity instanceof BaseBlockEntity) {
                 ItemScatterer.spawn(world, pos, ((BaseBlockEntity) blockEntity));
-                world.updateHorizontalAdjacent(pos, this);
+                world.updateComparators(pos, this);
             }
 
-            super.onBlockRemoved(state, world, pos, newState, moved);
+            super.onStateReplaced(state, world, pos, newState, moved);
         }
     }
 }

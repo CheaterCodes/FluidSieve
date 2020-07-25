@@ -2,9 +2,8 @@ package net.cheatercodes.fluid_sieve.block.entity;
 
 import net.cheatercodes.fluid_sieve.FluidSieve;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.LootableContainerBlockEntity;
-import net.minecraft.container.Container;
-import net.minecraft.container.GenericContainer;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
@@ -13,12 +12,14 @@ import net.minecraft.loot.context.LootContext;
 import net.minecraft.loot.context.LootContextParameters;
 import net.minecraft.loot.context.LootContextType;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.screen.GenericContainerScreenHandler;
+import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
-import net.minecraft.util.DefaultedList;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Tickable;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.registry.Registry;
 
 import java.util.List;
@@ -29,8 +30,8 @@ public class BaseBlockEntity extends LootableContainerBlockEntity implements Tic
     private DefaultedList<ItemStack> inventory;
 
     public BaseBlockEntity() {
-        super(FluidSieve.BLOCK_ENTITY_TYPES.BASE);
-        this.inventory = DefaultedList.ofSize(this.getInvSize(), ItemStack.EMPTY);
+        super(FluidSieveBlockEntityTypes.BASE);
+        this.inventory = DefaultedList.ofSize(this.size(), ItemStack.EMPTY);
     }
 
     @Override
@@ -49,12 +50,12 @@ public class BaseBlockEntity extends LootableContainerBlockEntity implements Tic
     }
 
     @Override
-    protected Container createContainer(int i, PlayerInventory playerInventory) {
-        return GenericContainer.createGeneric9x3(i, playerInventory, this);
+    protected ScreenHandler createScreenHandler(int i, PlayerInventory playerInventory) {
+        return GenericContainerScreenHandler.createGeneric9x3(i, playerInventory, this);
     }
 
     @Override
-    public int getInvSize() {
+    public int size() {
         return 9 * 3;
     }
 
@@ -70,10 +71,10 @@ public class BaseBlockEntity extends LootableContainerBlockEntity implements Tic
     }
 
     @Override
-    public void fromTag(CompoundTag tag) {
-        super.fromTag(tag);
+    public void fromTag(BlockState state, CompoundTag tag) {
+        super.fromTag(state, tag);
 
-        this.inventory = DefaultedList.ofSize(this.getInvSize(), ItemStack.EMPTY);
+        this.inventory = DefaultedList.ofSize(this.size(), ItemStack.EMPTY);
         if (!this.deserializeLootTable(tag)) {
             Inventories.fromTag(tag, this.inventory);
         }
@@ -95,29 +96,29 @@ public class BaseBlockEntity extends LootableContainerBlockEntity implements Tic
     private List<ItemStack> getLoot() {
         Block sourceBlock = world.getBlockState(pos.up()).getBlock();
         Identifier sourceID = Registry.BLOCK.getId(sourceBlock);
-        Identifier lootTableID = new Identifier(sourceID.getNamespace(), "fluid_sieve/" + sourceID.getPath());
-        LootTable lootTable = world.getServer().getLootManager().getSupplier(lootTableID);
+        Identifier lootTableID = new Identifier(sourceID.getNamespace(), "fluid_sieve/" + sourceID.getNamespace() + "/" + sourceID.getPath());
+        LootTable lootTable = world.getServer().getLootManager().getTable(lootTableID);
 
         LootContextType.Builder typeBuilder = new LootContextType.Builder();
         typeBuilder.allow(LootContextParameters.POSITION);
         LootContextType type = typeBuilder.build();
 
         LootContext.Builder contextBuilder = new LootContext.Builder((ServerWorld)world);
-        contextBuilder.put(LootContextParameters.POSITION, pos.up());
+        contextBuilder.parameter(LootContextParameters.POSITION, pos.up());
         this.lootContext = contextBuilder.build(type);
 
-        return lootTable.getDrops(lootContext);
+        return lootTable.generateLoot(lootContext);
     }
 
     private void insert(ItemStack stack) {
         if(stack.isStackable()) {
-            for (int slotIndex = 0; slotIndex < getInvSize(); slotIndex++) {
-                ItemStack slot = getInvStack(slotIndex);
+            for (int slotIndex = 0; slotIndex < size(); slotIndex++) {
+                ItemStack slot = getStack(slotIndex);
                 if (slot.getItem() == stack.getItem()) {
-                    int maxStack = Math.min(slot.getMaxCount(), getInvMaxStackAmount());
+                    int maxStack = Math.min(slot.getMaxCount(), getMaxCountPerStack());
                     int amount = Math.min(maxStack - slot.getCount(), stack.getCount());
                     slot.increment(amount);
-                    setInvStack(slotIndex, slot);
+                    setStack(slotIndex, slot);
                     stack.decrement(amount);
                     if(stack.isEmpty()) {
                         return;
@@ -126,12 +127,12 @@ public class BaseBlockEntity extends LootableContainerBlockEntity implements Tic
             }
         }
 
-        for(int slotIndex = 0; slotIndex < getInvSize(); slotIndex++) {
-            ItemStack slot = getInvStack(slotIndex);
+        for(int slotIndex = 0; slotIndex < size(); slotIndex++) {
+            ItemStack slot = getStack(slotIndex);
             if(slot.isEmpty()) {
-                int maxStack = Math.min(slot.getMaxCount(), getInvMaxStackAmount());
+                int maxStack = Math.min(slot.getMaxCount(), getMaxCountPerStack());
                 int amount = Math.min(maxStack - slot.getCount(), stack.getCount());
-                setInvStack(slotIndex, stack.split(amount));
+                setStack(slotIndex, stack.split(amount));
                 if(stack.isEmpty()) {
                     return;
                 }
