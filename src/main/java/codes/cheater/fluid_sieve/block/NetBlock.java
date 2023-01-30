@@ -1,4 +1,4 @@
-package net.cheatercodes.fluid_sieve.block;
+package codes.cheater.fluid_sieve.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -39,7 +39,7 @@ public class NetBlock extends Block implements Fluidloggable {
     }
 
     @Override
-    public VoxelShape getRayTraceShape(BlockState state, BlockView view, BlockPos pos) {
+    public VoxelShape getRaycastShape(BlockState state, BlockView world, BlockPos pos) {
         return collisionShape;
     }
 }

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "quilt_loader": {
+    "group": "codes.cheater",
+    "id": "fluid_sieve",
+    "version": "${version}",
+    "metadata": {
+      "name": "Fluid Sieve",
+      "description": "A block extracting resources from fluids (or any other block).",
+      "contributors": {
+        "CheaterCodes": "Owner"
+      },
+      "contact": {
+        "issues": "https://github.com/CheaterCodes/FluidSieve/issues",
+        "sources": "https://github.com/CheaterCodes/FluidSieve"
+      },
+      "icon": "assets/fluid_sieve/icon.png"
+    },
+    "intermediate_mappings": "net.fabricmc:intermediary",
+    "entrypoints": {
+      "init": "codes.cheater.fluid_sieve.FluidSieve",
+      "client_init": "codes.cheater.fluid_sieve.FluidSieveClient"
+    },
+    "depends": [
+      {
+        "id": "quilt_loader",
+        "versions": ">=0.17.6-"
+      },
+      {
+        "id": "quilted_fabric_api",
+        "versions": ">=5.0.0-"
+      },
+      {
+        "id": "minecraft",
+        "versions": ">=1.19.3"
+      },
+      {
+        "id": "towelette",
+        "versions": ">=5.0.0"
+      }
+    ]
+  }
+}
